@@ -7,19 +7,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Entity
+@Entity(name = "school")
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class School {
     @Id
-    @Column(name = "sc_name")
+    @Column(name = "name")
     private String name;
-
-    @Column(name =  "sc_email")
+    @Column(name = "email")
     private String email;
-
-    @Column(name = "sc_password")
+    @Column(name = "password")
     private String password;
 
     @Builder

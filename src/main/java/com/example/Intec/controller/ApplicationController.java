@@ -22,10 +22,20 @@ public class ApplicationController {
     {
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
     }
-    @GetMapping("/api/apply")
+    @PostMapping("/api/application")
     public ResponseEntity<?> apply(@RequestBody ApplyDTO applyDTO){
         applicationService.apply(applyDTO);
-        return new ResponseEntity<>(headers, HttpStatus.CREATED).;
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+    }
+    @DeleteMapping("/api/application")
+    public ResponseEntity<?> delete(@RequestBody ApplyDTO applyDTO){
+        applicationService.delete(applyDTO);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
+    }
+    @PutMapping("/api/application")
+    public ResponseEntity<?> update(@RequestBody ApplyDTO applyDTO){
+        //update문 작성 해야함
+        return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
 }

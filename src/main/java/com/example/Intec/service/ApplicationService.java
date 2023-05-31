@@ -11,6 +11,10 @@ public class ApplicationService {
     private ApplicationRepository applicationRepository;
 
     public void apply(ApplyDTO applyDTO){
+        var applicationOptional = applicationRepository.findByNameAndBirthAndPhone(applyDTO.getName(), applyDTO.getBirth(), applyDTO.getPhone());
+        if(!applicationOptional.isPresent()){
+            throw new IllegalStateException("이미 수강신청이 되어있습니다");
+        }
         applicationRepository.save(applyDTO.toEntity());
     }
 
